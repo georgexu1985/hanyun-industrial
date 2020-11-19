@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~
+  ~      Copyright (c) 2018-2025, lengleng All rights reserved.
+  ~
+  ~  Redistribution and use in source and binary forms, with or without
+  ~  modification, are permitted provided that the following conditions are met:
+  ~
+  ~ Redistributions of source code must retain the above copyright notice,
+  ~  this list of conditions and the following disclaimer.
+  ~  Redistributions in binary form must reproduce the above copyright
+  ~  notice, this list of conditions and the following disclaimer in the
+  ~  documentation and/or other materials provided with the distribution.
+  ~  Neither the name of the pig4cloud.com developer nor the names of its
+  ~  contributors may be used to endorse or promote products derived from
+  ~  this software without specific prior written permission.
+  ~  Author: lengleng (wangiegie@gmail.com)
+  ~
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hanyun.industrial.mapper.DbdVehicleMapper">
+
+  <resultMap id="dbdVehicleMap" type="com.hanyun.industrial.entity.DbdVehicle">
+                        <result property="terminalId" column="terminal_id"/>
+                        <result property="vincode" column="vincode"/>
+                        <result property="engineCode" column="engine_code"/>
+                        <result property="chassisCode" column="chassis_code"/>
+                        <result property="productType" column="product_type"/>
+                        <result property="modelType" column="model_type"/>
+                        <result property="carNumber" column="car_number"/>
+                        <result property="productDate" column="product_date"/>
+                        <result property="buyDate" column="buy_date"/>
+                        <result property="workdatatime" column="workdatatime"/>
+                        <result property="lng" column="lng"/>
+                        <result property="lat" column="lat"/>
+                        <result property="speed" column="speed"/>
+                        <result property="totalenginefuel" column="totalenginefuel"/>
+                        <result property="totalenginehours" column="totalenginehours"/>
+                        <result property="totalmileage" column="totalmileage"/>
+                        <result property="engineoilpressure" column="engineoilpressure"/>
+                        <result property="enginewatertemperature" column="enginewatertemperature"/>
+                        <result property="enginespeed" column="enginespeed"/>
+                        <result property="onlinestate" column="onlinestate"/>
+                        <result property="createtime" column="createtime"/>
+                        <result property="updatetime" column="updatetime"/>
+            </resultMap>
+
+    <select id="count" resultType="java.lang.Integer">
+        select count(*)
+        from dbd_vehicle
+    </select>
+</mapper>
