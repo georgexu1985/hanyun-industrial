@@ -52,4 +52,23 @@
         select count(*)
         from dbd_vehicle
     </select>
+
+    <select id="queryVehicleNum" resultType="java.util.HashMap">
+        select count(1) as vehicleCount,sum(onlinestate) as onlineCount,count(1)-sum(onlinestate) as offlineCount,
+        sum(case when speed>100 or engineoilpressure>400 then 1 else 0 end) as alarmCount
+        from dbd_vehicle;
+    </select>
+
+    <select id="queryVehicleInfo" resultType="java.util.HashMap">
+        select CURRENT_DATE as getDate,ifnull(sum(mileage),0) as mileage,ifnull(sum(fuel),0) as fuel,ifnull(sum(hours),0) as hours
+        from dbd_dayreport t where t.get_date=CURRENT_DATE;
+    </select>
+
+    <update id="updateVehicleInfo">
+        update dbd_vehicle
+        <set>
+            updatetime = now(),
+        </set>
+        where terminal_Id = #{terminalId}
+    </update>
 </mapper>

@@ -7,6 +7,9 @@ import com.hanyun.industrial.entity.DbdVehicle;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 
  *
@@ -15,5 +18,22 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface DbdVehicleMapper extends BaseMapper<DbdVehicle> {
-    Integer count(@Param("name") String name);
+    /**
+     * 查询车辆统计信息
+     *
+     */
+    HashMap<String, Object> queryVehicleNum();
+
+    /**
+     * 查询车辆里程等信息
+     *
+     */
+    HashMap<String, Object> queryVehicleInfo();
+
+    /**
+     * 更新车辆信息
+     *
+     * @param terminalId 车辆Id
+     */
+    void updateVehicleInfo(@Param("terminalId") String terminalId);
 }

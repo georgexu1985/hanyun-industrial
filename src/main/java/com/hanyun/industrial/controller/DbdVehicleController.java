@@ -26,7 +26,21 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "dbdvehicle", tags = "管理")
 public class DbdVehicleController {
 
+    final static Integer ONLINESTATE = 1;
+
     private final  DbdVehicleService dbdVehicleService;
+
+
+    /**
+     * 查询车辆在线数量和当日里程等信息
+     *
+     * @return
+     */
+    @ApiOperation(value = "分页查询", notes = "分页查询")
+    @GetMapping("/getDbdVehicleSumInfo" )
+    public R getDbdVehiclePage() {
+        return R.success(null, dbdVehicleService.queryVehicleSumInfo());
+    }
 
     /**
      * 分页查询
@@ -37,20 +51,19 @@ public class DbdVehicleController {
     @ApiOperation(value = "分页查询", notes = "分页查询")
     @GetMapping("/page" )
     public R getDbdVehiclePage(Page page, DbdVehicle dbdVehicle) {
-        System.out.println("#####################" + dbdVehicleService.count(""));
         return R.ok(dbdVehicleService.page(page, Wrappers.query(dbdVehicle)));
     }
 
 
     /**
      * 通过id查询
-     * @param id id
+     * @param terminalId id
      * @return R
      */
     @ApiOperation(value = "通过id查询", notes = "通过id查询")
-    @GetMapping("/{id}" )
-    public R getById(@PathVariable("id" ) String id) {
-        return R.ok(dbdVehicleService.getById(id));
+    @GetMapping("/{terminalId}" )
+    public R getById(@PathVariable("terminalId" ) String terminalId) {
+        return R.ok(dbdVehicleService.getById(terminalId));
     }
 
     /**
@@ -72,18 +85,21 @@ public class DbdVehicleController {
     @ApiOperation(value = "修改", notes = "修改")
     @PutMapping
     public R updateById(@RequestBody DbdVehicle dbdVehicle) {
-        return R.ok(dbdVehicleService.updateById(dbdVehicle));
+        dbdVehicle.setOnlinestate(ONLINESTATE);
+        dbdVehicleService.updateById(dbdVehicle);
+        dbdVehicleService.updateVehicleInfo(dbdVehicle.getTerminalId());
+        return R.ok(true);
     }
 
     /**
      * 通过id删除
-     * @param id id
+     * @param terminalId id
      * @return R
      */
     @ApiOperation(value = "通过id删除", notes = "通过id删除")
-    @DeleteMapping("/{id}" )
-    public R removeById(@PathVariable String id) {
-        return R.ok(dbdVehicleService.removeById(id));
+    @DeleteMapping("/{terminalId}" )
+    public R removeById(@PathVariable String terminalId) {
+        return R.ok(dbdVehicleService.removeById(terminalId));
     }
 
 }
