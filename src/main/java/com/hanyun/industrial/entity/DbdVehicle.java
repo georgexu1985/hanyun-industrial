@@ -76,7 +76,7 @@ private static final long serialVersionUID = 1L;
      * 工况时间
      */
     @ApiModelProperty(value="工况时间")
-    private Date workdatatime;
+    private String workdatatime;
     /**
      * 经度
      */
