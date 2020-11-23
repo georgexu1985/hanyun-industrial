@@ -5,7 +5,7 @@ spring:
   application:
     name: iot
   datasource:
-    url: jdbc:mysql://mysql.app.hanyuniip.cn:3306/DB_CAR?characterEncoding=UTF-8
+    url: jdbc:mysql://mysql.app.hanyuniip.cn:30006/DB_CAR?characterEncoding=UTF-8
     username: root
     password: qwe123#!
     driver-class-name: com.mysql.cj.jdbc.Driver
