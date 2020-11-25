@@ -55,7 +55,7 @@
 
     <select id="queryVehicleNum" resultType="java.util.HashMap">
         select count(1) as vehicleCount,sum(onlinestate) as onlineCount,count(1)-sum(onlinestate) as offlineCount,
-        sum(case when speed>100 or engineoilpressure>400 then 1 else 0 end) as alarmCount
+        sum(case when speed>80 or engineoilpressure>400 then 1 else 0 end) as alarmCount
         from dbd_vehicle;
     </select>
 
