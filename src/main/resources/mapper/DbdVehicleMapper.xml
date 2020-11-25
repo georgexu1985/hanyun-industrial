@@ -61,7 +61,7 @@
 
     <select id="queryVehicleInfo" resultType="java.util.HashMap">
         select CURRENT_DATE as getDate,ifnull(sum(mileage),0) as mileage,ifnull(sum(fuel),0) as fuel,ifnull(sum(hours),0) as hours
-        from dbd_dayreport t where t.get_date=t.createtime;
+        from dbd_dayreport t where t.createtime=CURRENT_DATE;
     </select>
 
     <update id="updateVehicleInfo">
