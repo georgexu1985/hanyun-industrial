@@ -4,6 +4,7 @@ package com.hanyun.industrial.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hanyun.industrial.entity.Mileage;
 import com.hanyun.industrial.util.R;
 import com.hanyun.industrial.entity.DbdVehicle;
 import com.hanyun.industrial.service.DbdVehicleService;
@@ -12,6 +13,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,6 +33,20 @@ public class DbdVehicleController {
     final static Integer ONLINESTATE = 1;
 
     private final  DbdVehicleService dbdVehicleService;
+
+    /**
+     * 获取今日里程
+     *
+     * @return
+     */
+    @ApiOperation(value = "获取今日里程")
+    @GetMapping("/getMileage" )
+    public List<Mileage> getMileage() {
+        List<Mileage> list = new ArrayList<>();
+        list.add(new Mileage("今日里程", 10));
+        return list;
+    }
+
 
 
     /**
