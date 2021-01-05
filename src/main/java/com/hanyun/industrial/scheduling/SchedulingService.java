@@ -10,7 +10,7 @@ public class SchedulingService {
 
     private static int count = 0;
 
-    @Scheduled(cron = "0 */1 * * * ?")
+    @Scheduled(cron = "*/10 * * * * ?")
     public void init() {
         log.info("##############SchedulingService ================== " + count++);
     }
