@@ -12,6 +12,6 @@ public class SchedulingService {
 
     @Scheduled(cron = "*/10 * * * * ?")
     public void init() {
-//        log.info("##############SchedulingService ================== " + count++);
+        log.info("##############SchedulingService ================== " + count++);
     }
 }
